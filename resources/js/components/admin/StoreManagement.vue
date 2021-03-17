@@ -112,6 +112,8 @@
 </template>
 
 <script>
+import Api from "../../apis/Api";
+
 export default {
   props: ['creator'],
   data: () => ({

@@ -9,9 +9,10 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
-/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
-/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _apis_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../apis/Api */ "./resources/js/apis/Api.js");
+/* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
+/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
+/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -432,15 +433,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'EditModal',
   props: ['creator'],
   components: {
-    Hooper: hooper__WEBPACK_IMPORTED_MODULE_0__["Hooper"],
-    Slide: hooper__WEBPACK_IMPORTED_MODULE_0__["Slide"],
-    HooperNavigation: hooper__WEBPACK_IMPORTED_MODULE_0__["Navigation"]
+    Hooper: hooper__WEBPACK_IMPORTED_MODULE_1__["Hooper"],
+    Slide: hooper__WEBPACK_IMPORTED_MODULE_1__["Slide"],
+    HooperNavigation: hooper__WEBPACK_IMPORTED_MODULE_1__["Navigation"]
   },
   data: function data() {
     return {
@@ -755,13 +757,15 @@ var render = function() {
                                       _c("v-lazy-image", {
                                         attrs: {
                                           src:
-                                            "/storage/creator_images/" +
+                                            _vm.$root.storageUrl +
+                                            "/creator_images/" +
                                             _vm.img.id +
                                             "/previews/" +
                                             product.product_code +
                                             "/1000_1.jpg",
                                           "src-placeholder":
-                                            "/storage/images/placeholder-white.png"
+                                            _vm.$root.storageUrl +
+                                            "/images/placeholder-white.png"
                                         }
                                       })
                                     ],
@@ -950,7 +954,8 @@ var render = function() {
                                       staticClass: "thumbnail",
                                       attrs: {
                                         src:
-                                          "/storage/creator_images/" +
+                                          _vm.$root.storageUrl +
+                                          "/creator_images/" +
                                           _vm.img.id +
                                           "/previews/" +
                                           product.product_code +
@@ -1049,11 +1054,13 @@ var render = function() {
                                 staticClass: "img-prev",
                                 attrs: {
                                   src:
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     _vm.img.id +
                                     "/500.jpg",
                                   "src-placeholder":
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     _vm.img.id +
                                     "/80.jpg"
                                 }

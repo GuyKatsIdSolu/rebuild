@@ -74,6 +74,7 @@
 </template>
 
     <script>
+    import Api from "../../apis/Api";
     export default {
       props:['creator','user'],
       data() {
@@ -215,7 +216,7 @@
             });
             return;
           }
-          axios.post('/api/set-profile', {
+          Api.post('/api/set-profile', {
             'creatorId': this.creator.id,
             'first_name':this.user.first_name,
             'last_name':this.user.last_name,

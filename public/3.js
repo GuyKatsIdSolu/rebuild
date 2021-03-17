@@ -315,13 +315,16 @@ var render = function() {
                                 _vm.isAdminPage
                                   ? _c("img", {
                                       attrs: {
-                                        src: "/storage/images/artigram-logo.png"
+                                        src:
+                                          _vm.$root.storageUrl +
+                                          "/images/artigram-logo.png"
                                       }
                                     })
                                   : _c("img", {
                                       attrs: {
                                         src:
-                                          "/storage/images/artigram-logo-square.png"
+                                          _vm.$root.storageUrl +
+                                          "/images/artigram-logo-square.png"
                                       }
                                     })
                               ]

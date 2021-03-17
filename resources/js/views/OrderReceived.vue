@@ -3,7 +3,7 @@
     <div class="top-name">
       <div class="wrap" v-if="storeOwner">
         <a href="" @click.prevent="$router.push('/@'+storeOwner.username)">
-          <img  :src="'/storage/creator_images/'+storeOwner.id+'.jpg'" alt="Avatar of user ">
+          <img  :src="$root.storageUrl+'/creator_images/'+storeOwner.id+'.jpg'" alt="Avatar of user ">
         </a>
         <a v-if="$root.isMobile" href="" @click.prevent="$router.push('/@'+storeOwner.username)" class="back-mobile">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" style="width: 16px; height: 16px;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1">
@@ -43,7 +43,7 @@
                 <div class="col-md-12 item" v-for="(item, $index) in order.items" :key="$index">
                   <div class="col-md-12" style="margin-bottom: 10px;margin-left: 10px;">Item ID - #{{item.id}}</div>
                   <div class="img col-md-4">
-                    <img :src="'/storage/creator_images/'+item.product.image_id+'/previews/'+item.product.product_code+'/1000_1.jpg'" alt=""/>
+                    <img :src="$root.storageUrl+'/creator_images/'+item.product.image_id+'/previews/'+item.product.product_code+'/1000_1.jpg'" alt=""/>
                   </div>
                   <div class="details col-md-8">
                     <b><div class="col-md-8">{{item.product.details.title}}</div><div class="col-md-4">{{parseInt(item.quantity)}}x  ${{(parseFloat(item.price)/(1-parseFloat(item.discount)/100)).toFixed(2)}} USD</div></b>
@@ -94,6 +94,7 @@
 </template>
 
 <script>
+import Api from "../apis/Api";
 export default {
   data() {
     return {
@@ -108,7 +109,7 @@ export default {
   },
   created() {
     var that = this;
-    axios.get('/api/order/' + this.$route.params.orderId)
+    Api.get('/api/order/' + this.$route.params.orderId)
     .then(response => {
       for (var i in response.data.items) {
         if (response.data.items.hasOwnProperty(i)) {

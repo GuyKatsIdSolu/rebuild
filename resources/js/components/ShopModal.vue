@@ -9,7 +9,7 @@
       </a>
       <div class="">
         <div class="user-big-thumb">
-          <img :src="'/storage/creator_images/'+creator.id+'.jpg'" alt="Avatar of user" style="">
+          <img :src="$root.storageUrl+'/creator_images/'+creator.id+'.jpg'" alt="Avatar of user" style="">
         </div>
         <div class="row-one">
           <div class="title">{{img.name}}<span> (ID {{img.id}})</span></div>
@@ -29,7 +29,7 @@
                   :url="$root.currentUrl+ '/product-' + curProduct.id"
                   :title="img.name"
                   :description="img.description"
-                  :media="$root.currentUrl + '/storage/creator_images/'+img.id+'/previews/'+curProduct.product_code+'/1000_1.jpg'"
+                  :media="$root.currentUrl + $root.storageUrl+'/creator_images/'+img.id+'/previews/'+curProduct.product_code+'/1000_1.jpg'"
                   >
                   <svg height="30px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs19"/><g id="g3031"><path d="m 511.672,255.92999 c 0,141.3849 -114.61511,256 -256,256 -141.3849,0 -256.00000293,-114.6151 -256.00000293,-256 C -0.32800293,114.5451 114.2871,-0.07000732 255.672,-0.07000732 c 141.38489,0 256,114.61510732 256,255.99999732 z" id="circle8" style="fill:#cb2027;fill-opacity:1"/><g id="g3000" transform="translate(-603.11865,-9.8474559)"><g id="g3142" transform="translate(221.28814,-27.9639)"><g id="Layer_14"><g id="g3121"><path d="m 645.85601,122.6817 c -93.402,0 -140.5,66.963 -140.5,122.815 0,33.812 12.796,63.89 40.25,75.089 4.505,1.858 8.54,0.065 9.849,-4.916 0.906,-3.438 3.055,-12.139 4.015,-15.777 1.31,-4.928 0.799,-6.646 -2.833,-10.957 -7.916,-9.332 -12.985,-21.416 -12.985,-38.551 0,-49.677 37.175,-94.154 96.794,-94.154 52.797,0 81.801,32.26 81.801,75.329 0,56.692 -25.089,104.534 -62.325,104.534 -20.563,0 -35.953,-16.999 -31.031,-37.865 5.908,-24.908 17.355,-51.777 17.355,-69.771 0,-16.087 -8.646,-29.507 -26.513,-29.507 -21.021,0 -37.913,21.752 -37.913,50.884 0,18.558 6.271,31.112 6.271,31.112 0,0 -21.518,91.16 -25.291,107.125 -7.506,31.798 -1.128,70.766 -0.584,74.692 0.315,2.343 3.317,2.907 4.68,1.142 1.927,-2.53 26.983,-33.441 35.482,-64.34 2.417,-8.739 13.831,-54.032 13.831,-54.032 6.835,13.038 26.794,24.491 48.024,24.491 63.19,0 106.072,-57.604 106.072,-134.719 0.006,-58.317 -49.387,-112.624 -124.449,-112.624 z" id="path3131" style="fill:#ffffff"/></g></g><g id="Layer_1_1_-8"/></g></g></g><g id="Layer_1_1_"/></svg>
                 </ShareNetwork>
@@ -38,7 +38,7 @@
                   </svg>
                   <svg v-else @click="like(img)" class="heart2" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><defs></defs><g class="cls-1"><circle class="cls-2" cx="75" cy="75" r="74.88"/><path class="cls-3" d="M150,68.25A74.75,74.75,0,1,1,75.25,143,74.83,74.83,0,0,1,150,68.25m0-.25a75,75,0,1,0,75,75,75,75,0,0,0-75-75Z" transform="translate(-75 -68)"/></g><path class="cls-4" d="M169.77,109.72c12.74.07,23.06,12.2,23.12,27.2,0,27.46-42.5,54.66-42.5,54.66s-42.5-27.6-42.5-54.66c0-15,10.35-27.2,23.12-27.2h0c7.82-.08,15.12,4.55,19.38,12.26C154.68,114.31,162,109.69,169.77,109.72Z" transform="translate(-75 -68)"/></svg>
                 </div>
-                <v-lazy-image :src="'/storage/creator_images/'+img.id+'/previews/'+curProduct.product_code+'/1000_1.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                <v-lazy-image :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/'+curProduct.product_code+'/1000_1.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
               </div>
             </div>
             <div class="col-md-6 details" >
@@ -94,19 +94,21 @@
         <hooper :wheelControl="false" :itemsToShow="4" :infiniteScroll="true">
           <slide v-for="(product ,index) in products" :key="index">
             <div class="thumbnail-wrapper" @click.prevent="curProduct=product">
-              <v-lazy-image class="thumbnail" :src="'/storage/creator_images/'+img.id+'/previews/'+curProduct.product_code+'/1000_1.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+              <v-lazy-image class="thumbnail" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/'+curProduct.product_code+'/1000_1.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
             </div>
           </slide>
           <hooper-navigation slot="hooper-addons"></hooper-navigation>
         </hooper>
       </div>
-      <div class="view-full-shop" @click.prevent="goToShop(img.id)"><img src="/storage/images/view_products_icon.png" /> View all products</div>
+      <div class="view-full-shop" @click.prevent="goToShop(img.id)"><img :src="$root.storageUrl+'/images/view_products_icon.png'" /> View all products</div>
     </div>
 
   </div>
 </modal>
 </template>
 <script>
+import Api from "../apis/Api";
+
 import {
   Hooper,
   Slide,
@@ -157,7 +159,7 @@ export default {
       this.$root.clicked = true;
       this.$parent.imgLikeClicked.push(img.id);
       img.likes++;
-      axios.get('/api/image-like/'+img.id)
+      Api.get('/api/image-like/'+img.id)
       .then(response => {
         this.$root.clicked = false;
       });
@@ -221,11 +223,11 @@ export default {
           type: 'clicked'
         }
       });
-      axios.post('/api/add-item-to-cart', {
+      Api.post('/api/add-item-to-cart', {
         'productId': this.curProduct.id,
         'properties': this.selectedProperties,
         'quantity': this.quantity,
-        'previewUrl': this.$root.currentUrl + '/storage/creator_images/'+this.img.id+'/previews/'+this.curProduct.product_code+'/1000_1.jpg',
+        'previewUrl': this.$root.currentUrl + $root.storageUrl+'/creator_images/'+this.img.id+'/previews/'+this.curProduct.product_code+'/1000_1.jpg',
         'price': (this.prices[this.curProduct.product_code]*(100-this.creator.discount)/100).toFixed(2),
       })
       .then(response => {
@@ -247,7 +249,7 @@ export default {
     },
     getProductPreviews() {
       var that = this;
-      // axios.get('/api/image-products/' + this.img.id)
+      // Api.get('/api/image-products/' + this.img.id)
       // .then(response => {
         for (var index in this.img.products) {
           if(that.categories.includes(this.img.products[index].details.category_id)){

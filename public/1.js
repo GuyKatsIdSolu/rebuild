@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _apis_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../apis/Api */ "./resources/js/apis/Api.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -124,6 +125,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['creator'],
   data: function data() {
@@ -338,7 +340,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.switch-wrap input {\r\n  position: absolute;\r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\n}\n.switch-wrap {\r\n  cursor: pointer;\r\n  background: #eeeaef;\r\n  border: solid 1px black;\r\n  padding: 2px;\r\n  width: 38px;\r\n  height: 26px;\r\n  border-radius: 33px;\r\n  margin-bottom: 0;\n}\n.switch::after {\r\n  content: '';\r\n  border-radius: 50%;\r\n  border: solid 1px #8100ff;\r\n  grid-column: 2;\r\n  transition: background .6s;\r\n      background: white;\n}\n.switch {\r\n  height: 100%;\r\n  display: grid;\r\n  grid-template-columns:0px 20px 12px;\r\n  transition: .2s;\n}\ninput:checked + .switch::after {\r\n  background-color: #8100ff;\n}\ninput:checked + .switch {\r\n  grid-template-columns: 12px 20px 0px;\n}\r\n", ""]);
+exports.push([module.i, "\n.switch-wrap input {\n  position: absolute;\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n.switch-wrap {\n  cursor: pointer;\n  background: #eeeaef;\n  border: solid 1px black;\n  padding: 2px;\n  width: 38px;\n  height: 26px;\n  border-radius: 33px;\n  margin-bottom: 0;\n}\n.switch::after {\n  content: '';\n  border-radius: 50%;\n  border: solid 1px #8100ff;\n  grid-column: 2;\n  transition: background .6s;\n      background: white;\n}\n.switch {\n  height: 100%;\n  display: grid;\n  grid-template-columns:0px 20px 12px;\n  transition: .2s;\n}\ninput:checked + .switch::after {\n  background-color: #8100ff;\n}\ninput:checked + .switch {\n  grid-template-columns: 12px 20px 0px;\n}\n", ""]);
 
 // exports
 

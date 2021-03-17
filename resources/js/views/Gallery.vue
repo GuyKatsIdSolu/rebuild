@@ -3,7 +3,7 @@
     <div class="categories-filter">
       <a href="" @click.prevent="filter=0" >
         <div class="item">
-          <img src="/storage/images/nav_icons/Gallery.png"/>
+          <img :src="$root.storageUrl+'/images/nav_icons/Gallery.png'"/>
           <div>Gallery</div>
         </div>
       </a>
@@ -11,7 +11,7 @@
           <dropdown-menu v-model="show[index]" transition="translate-fade-down"  v-if="!Array.isArray(category)">
             <!-- <button class="btn btn-primary dropdown-toggle"> -->
             <div class="item dropdown-toggle">
-              <img :src="'/storage/images/nav_icons/'+category.name+'.png'"/>
+              <img :src="$root.storageUrl+'/images/nav_icons/'+category.name+'.png'"/>
               <div>{{category.name}}</div>
             </div>
             <!-- </button> -->
@@ -22,7 +22,7 @@
           <dropdown-menu v-model="show[index]" transition="translate-fade-down"  v-else>
             <!-- <button class="btn btn-primary dropdown-toggle"> -->
             <div class="item dropdown-toggle">
-              <img :src="'/storage/images/nav_icons/'+category[0].dady.name+'.png'"/>
+              <img :src="$root.storageUrl+'/images/nav_icons/'+category[0].dady.name+'.png'"/>
               <div>{{category[0].dady.name}}</div>
             </div>
             <!-- </button> -->
@@ -46,7 +46,7 @@
             <div class="right">
               <a :href="'/product-' + product.id" v-for="(product,index) in $root.elementAt(topSliderProducts[categoryId],0)" :key="index">
                 <div class="item">
-                  <v-lazy-image class="thumbnail" :src="'/storage/creator_images/' + product.image_id + '/previews/'+product.details.product_code+'/banner.png'" :src-placeholder="'/storage/creator_images/' + product.image_id + '/previews/'+product.details.product_code+'/banner.png'" />
+                  <v-lazy-image class="thumbnail" :src="$root.storageUrl+'/creator_images/' + product.image_id + '/previews/'+product.details.product_code+'/banner.png'" :src-placeholder="$root.storageUrl+'/creator_images/' + product.image_id + '/previews/'+product.details.product_code+'/banner.png'" />
                 </div>
               </a>
             </div>
@@ -67,7 +67,7 @@
             <div class="col-md-12">
               <div class="">
                 <div class="user-big-thumb" style="">
-                  <v-lazy-image v-if="storeOwner" :src="'/storage/creator_images/' + storeOwner.id + '.jpg'" src-placeholder="/storage/images/profile_img_placeholder.jpg" alt="Avatar of user"/>
+                  <v-lazy-image v-if="storeOwner" :src="$root.storageUrl+'/creator_images/' + storeOwner.id + '.jpg'" :src-placeholder="$root.storageUrl+'/images/profile_img_placeholder.jpg'" alt="Avatar of user"/>
                 </div>
                 <div class="user-big-thumb-right">
                   <b>{{storeOwner.store_name==''? storeOwner.user.first_name+' Shop' : storeOwner.store_name}}</b>
@@ -285,7 +285,7 @@
             <!-- <transition-group name="fade" tag="div"> -->
             <div v-lazy-container="{ selector: '.img-box' }" v-for="(img, $index) in imgs" :key="$index"  v-if="!filter || Object.keys(products[img.id]).includes(filter)">
               <div class="img-box _1Nk0C" >
-                <enlargeable-image trigger="click" animation_duration="100" class="enlarge-my" :src="$root.currentUrl + '/storage/creator_images/'+img.id+'/80.jpg'" :src_large="$root.currentUrl + '/storage/creator_images/'+img.id+'/1000.jpg'">
+                <enlargeable-image trigger="click" animation_duration="100" class="enlarge-my" :src="$root.currentUrl + $root.storageUrl+'/creator_images/'+img.id+'/80.jpg'" :src_large="$root.currentUrl + $root.storageUrl+'/creator_images/'+img.id+'/1000.jpg'">
                   <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146 146"><defs></defs><path class="cls-1" d="M147.55,74.36a73,73,0,1,1-73-73A73,73,0,0,1,147.55,74.36Z" transform="translate(-1.55 -1.36)"/><path d="M121.28,35c0-.14,0-.28,0-.42l0-.2a1.7,1.7,0,0,0,0-.22,1.42,1.42,0,0,0,0-.22c0-.07,0-.14,0-.2l-.07-.21-.08-.2a1.63,1.63,0,0,0-.09-.19l-.09-.2a1.74,1.74,0,0,0-.11-.18,1.74,1.74,0,0,0-.11-.18,2.43,2.43,0,0,1-.14-.2l-.12-.15a4.4,4.4,0,0,0-.61-.61l-.16-.12a1.33,1.33,0,0,0-.19-.14l-.19-.12-.17-.1-.21-.1-.18-.09-.2-.07-.21-.07-.2-.05-.22-.05-.24,0-.18,0-.44,0H91a4.4,4.4,0,1,0,0,8.79h15.28L79.71,66a4.39,4.39,0,1,0,6.22,6.21l26.56-26.56V60.91a4.4,4.4,0,1,0,8.79,0V35Z" transform="translate(-1.55 -1.36)"/><path d="M65.16,80.53,38.6,107.09V91.82a4.4,4.4,0,1,0-8.79,0V117.7h0c0,.15,0,.28,0,.42l0,.2a1.85,1.85,0,0,0,0,.23,1.74,1.74,0,0,0,.05.22c0,.07,0,.13.05.2a1.8,1.8,0,0,0,.08.21,1.46,1.46,0,0,0,.07.19,1.76,1.76,0,0,0,.09.2l.09.19a1.08,1.08,0,0,0,.11.18l.11.19a2.43,2.43,0,0,1,.14.2l.12.15a4.4,4.4,0,0,0,.61.61l.16.12.19.14.19.11.18.11.2.09.18.09.2.07.21.08.2,0,.22.05.23,0,.19,0a3.25,3.25,0,0,0,.44,0H60.09a4.4,4.4,0,1,0,0-8.79H44.82L71.38,86.75a4.4,4.4,0,0,0-6.22-6.22Z" transform="translate(-1.55 -1.36)"/>
                   </svg>
                 </enlargeable-image>
@@ -306,7 +306,7 @@
                   network="pinterest"
                   :url="$root.currentUrl+ '/catalog-' + img.id"
                   :title="img.name + ' (ID '+img.id+')'+' '+img.description+ ' ' +$root.getPinterestContent(img)"
-                  :media="$root.currentUrl+'/storage/creator_images/' + img.id + '/500.jpg'"
+                  :media="$root.currentUrl+$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'"
                   >
                   <svg height="30px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs19"/><g id="g3031"><path d="m 511.672,255.92999 c 0,141.3849 -114.61511,256 -256,256 -141.3849,0 -256.00000293,-114.6151 -256.00000293,-256 C -0.32800293,114.5451 114.2871,-0.07000732 255.672,-0.07000732 c 141.38489,0 256,114.61510732 256,255.99999732 z" id="circle8" style="fill:#cb2027;fill-opacity:1"/><g id="g3000" transform="translate(-603.11865,-9.8474559)"><g id="g3142" transform="translate(221.28814,-27.9639)"><g id="Layer_14"><g id="g3121"><path d="m 645.85601,122.6817 c -93.402,0 -140.5,66.963 -140.5,122.815 0,33.812 12.796,63.89 40.25,75.089 4.505,1.858 8.54,0.065 9.849,-4.916 0.906,-3.438 3.055,-12.139 4.015,-15.777 1.31,-4.928 0.799,-6.646 -2.833,-10.957 -7.916,-9.332 -12.985,-21.416 -12.985,-38.551 0,-49.677 37.175,-94.154 96.794,-94.154 52.797,0 81.801,32.26 81.801,75.329 0,56.692 -25.089,104.534 -62.325,104.534 -20.563,0 -35.953,-16.999 -31.031,-37.865 5.908,-24.908 17.355,-51.777 17.355,-69.771 0,-16.087 -8.646,-29.507 -26.513,-29.507 -21.021,0 -37.913,21.752 -37.913,50.884 0,18.558 6.271,31.112 6.271,31.112 0,0 -21.518,91.16 -25.291,107.125 -7.506,31.798 -1.128,70.766 -0.584,74.692 0.315,2.343 3.317,2.907 4.68,1.142 1.927,-2.53 26.983,-33.441 35.482,-64.34 2.417,-8.739 13.831,-54.032 13.831,-54.032 6.835,13.038 26.794,24.491 48.024,24.491 63.19,0 106.072,-57.604 106.072,-134.719 0.006,-58.317 -49.387,-112.624 -124.449,-112.624 z" id="path3131" style="fill:#ffffff"/></g></g><g id="Layer_1_1_-8"/></g></g></g><g id="Layer_1_1_"/></svg>
                 </ShareNetwork>
@@ -353,20 +353,20 @@
             <div class="quick-view" v-if="!$root.isMobile" @click.prevent="openShopModal(img)">Quick View</div>
           </div>
           <v-lazy-image class="img" :src="getPreviewPath(img,500)" :src-placeholder="getPreviewPath(img,80)" />
-          <!-- <v-lazy-image v-show="!filter" class="img" :src="'/storage/creator_images/' + img.id + '/500.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
-          <v-lazy-image v-show="filter && Object.keys(products[img.id]).includes(filter) " class="img" :src="'/storage/creator_images/' + img.id + '/previews/'+products[img.id][filter].product_code+'/500_1.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/previews/'+products[img.id][filter].product_code+'/80_1.jpg'" /> -->
+          <!-- <v-lazy-image v-show="!filter" class="img" :src="$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
+          <v-lazy-image v-show="filter && Object.keys(products[img.id]).includes(filter) " class="img" :src="$root.storageUrl+'/creator_images/' + img.id + '/previews/'+products[img.id][filter].product_code+'/500_1.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/previews/'+products[img.id][filter].product_code+'/80_1.jpg'" /> -->
           <hooper :wheelControl="false" :itemsToShow="2.5" :centerMode="true" :infiniteScroll="true" v-if="$root.isMobile">
             <slide v-for="(template,$j) in prevs[$index].templates_list" :key="$j">
               <a :href="'/product/' + prevs[$index].products_list[$j].id">
                 <div class="thumbnail-wrapper">
-                  <v-lazy-image class="thumbnail" :src="'/storage/temp/'+$j+'.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                  <v-lazy-image class="thumbnail" :src="$root.storageUrl+'/temp/'+$j+'.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
                 </div>
               </a>
             </slide>
             <hooper-navigation slot="hooper-addons"></hooper-navigation>
           </hooper>
           <div v-if="$root.isMobile" class="view-store-b" style="">
-            <a :href="'/catalog-' + img.id"><img src="storage/images/view_products_icon.png" /> View all products</a>
+            <a :href="'/catalog-' + img.id"><img :src="$root.storageUrl+'/images/view_products_icon.png'" /> View all products</a>
           </div>
         </div>
       </div>
@@ -377,12 +377,12 @@
     <div class="filtered-gallery row">
       <div class="item" v-for="(img, $index) in imgs" :key="$index" v-if="getProductCode(img)">
         <div class="hover"></div>
-        <v-lazy-image class="img" :src="'/storage/creator_images/'+img.id+'/previews/'+getProductCode(img)+'/1000_1.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+        <v-lazy-image class="img" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/'+getProductCode(img)+'/1000_1.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
       </div>
     </div>
   </div>
 </div>
-<div v-else class="no-img"><img src="/storage/images/no-img.png" /></div>
+<div v-else class="no-img"><img :src="$root.storageUrl+'/images/no-img.png'" /></div>
 </div>
 </div>
 </div>
@@ -456,9 +456,9 @@ export default {
   methods:{
     getPreviewPath(img,size){
       if(this.filter){
-        return '/storage/creator_images/' + img.id + '/previews/'+this.products[img.id][this.filter].product_code+'/'+size+'_1.jpg'
+        return this.$root.storageUrl+'/creator_images/' + img.id + '/previews/'+this.products[img.id][this.filter].product_code+'/'+size+'_1.jpg'
       }
-      return '/storage/creator_images/' + img.id+'/'+size+'.jpg'
+      return this.$root.storageUrl+'/creator_images/' + img.id+'/'+size+'.jpg'
     },
     like(img){
       this.$root.clicked = true

@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _apis_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apis/Api */ "./resources/js/apis/Api.js");
 //
 //
 //
@@ -84,6 +85,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['store'],
   data: function data() {
@@ -95,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getContent: function getContent() {
       var vm = this;
-      axios.get('/api/get-cart-content').then(function (response) {
+      _apis_Api__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/get-cart-content').then(function (response) {
         vm.cartContent = response.data; // debugger;
       });
     },
@@ -106,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var vm = this;
-      axios.get('/api/remove-item-from-cart/' + rowId).then(function (response) {
+      _apis_Api__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/remove-item-from-cart/' + rowId).then(function (response) {
         vm.$delete(_this.cartContent, rowId);
       });
     },

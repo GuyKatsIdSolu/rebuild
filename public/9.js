@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _apis_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../apis/Api */ "./resources/js/apis/Api.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -203,6 +204,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Gallery',
   props: ['user', 'creator', 'status', 'limit', 'pagination', 'perPage', 'forceSearch', 'isFirstTime'],
@@ -383,7 +385,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       $('.edit-image-popup .delete_url').attr('href', '/account/delete/' + img.id);
       $('.edit-image-popup textarea[name=description]').val(img.description);
       $('.edit-image-popup .img-name').val(img.name);
-      $('.edit-image-popup .img-prev').attr('src', 'https://my.' + this.$root.dev + 'artigram.me/storage/creator_images/' + img.id + '/500.jpg');
+      $('.edit-image-popup .img-prev').attr('src', this.$root.storageUrl + '/creator_images/' + img.id + '/500.jpg');
       $('.edit-image-popup #is_active').prop('checked', true);
       $('.edit-image-popup #isnt_active').prop('checked', false);
     },
@@ -499,7 +501,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return true;
     },
     getSrc: function getSrc(img) {
-      return window.location.origin + '/storage/creator_images/' + img.id + '/500.jpg';
+      return window.location.origin + this.$root.storageUrl + '/creator_images/' + img.id + '/500.jpg';
     }
   }
 });
@@ -619,7 +621,9 @@ var render = function() {
                       _c("div", { staticClass: "pos-abs" }, [
                         _c("img", {
                           attrs: {
-                            src: "/storage/images/approved-images-icon.png"
+                            src:
+                              _vm.$root.storageUrl +
+                              "/images/approved-images-icon.png"
                           }
                         }),
                         _vm._v(" "),
@@ -644,7 +648,9 @@ var render = function() {
                         _c("div", { staticClass: "pos-abs" }, [
                           _c("img", {
                             attrs: {
-                              src: "/storage/images/pending-image-icon.png"
+                              src:
+                                _vm.$root.storageUrl +
+                                "/images/pending-image-icon.png"
                             }
                           }),
                           _vm._v(" "),
@@ -674,7 +680,9 @@ var render = function() {
                       _c("div", { staticClass: "pos-abs" }, [
                         _c("img", {
                           attrs: {
-                            src: "/storage/images/not-approved-images-icon.png"
+                            src:
+                              _vm.$root.storageUrl +
+                              "/images/not-approved-images-icon.png"
                           }
                         }),
                         _vm._v(" "),
@@ -1389,11 +1397,13 @@ var render = function() {
                                 class: "img " + "img-" + img.id,
                                 attrs: {
                                   src:
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     img.id +
                                     "/500.jpg",
                                   "src-placeholder":
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     img.id +
                                     "/80.jpg"
                                 }
@@ -1402,11 +1412,13 @@ var render = function() {
                                 class: "img " + "img-" + img.id,
                                 attrs: {
                                   src:
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     img.id +
                                     "/1000C.jpg",
                                   "src-placeholder":
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     img.id +
                                     "/80.jpg"
                                 }

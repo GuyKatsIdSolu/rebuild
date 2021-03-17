@@ -520,6 +520,7 @@
 </template>
 
 <script>
+import Api from "../apis/Api";
 export default {
   data: () => ({
     cartContent: {},
@@ -555,7 +556,7 @@ export default {
     },
     state(val) {
       // var that=this;
-      // axios.post('/update-shipping', {
+      // Api.post('/update-shipping', {
       //   state: that.state,
       //   country_code: that.country_code,
       //   post_code: that.postCode,
@@ -601,7 +602,7 @@ export default {
             return false;
           }
           that.cardholderName = $('#cardholder-name').val();
-          axios.post('/api/pay-with-credit-card', {
+          Api.post('/api/pay-with-credit-card', {
             email: that.email,
             first_name: that.firstName,
             last_name: that.lastName,
@@ -634,7 +635,7 @@ export default {
         });
       }
       if (this.payMethod == 'paypal') {
-        axios.post('/api/pay-with-paypal', {
+        Api.post('/api/pay-with-paypal', {
           email: that.email,
           first_name: that.firstName,
           last_name: that.lastName,
@@ -658,7 +659,7 @@ export default {
     },
     getContent() {
       var that = this;
-      axios.get('/api/get-cart-content')
+      Api.get('/api/get-cart-content')
       .then(response => {
         that.cartContent = response.data;
         that.subTotal = that.itemCount = that.totalShipping=that.total = 0;
@@ -693,7 +694,7 @@ export default {
   // fbq('track', 'InitiateCheckout');
   // ga('send', 'event', 'EnhancedEcommerce', 'checkout step', window.location.href);
   var vm = this;
-  axios.get('/api/get-bluesnap-token')
+  Api.get('/api/get-bluesnap-token')
   .then(response => {
     bluesnap.hostedPaymentFieldsCreation(response.data, bsObj); //insert your Hosted Payment Fields token
     vm.pfToken = response.data;

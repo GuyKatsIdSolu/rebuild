@@ -85,7 +85,7 @@ export default {
       this.title=img.name;
       this.description=img.description;
       this.url=this.$root.currentUrl+ '/gallery/' + img.id;
-      this.media=this.$root.currentUrl + 'storage/creators_images/' + img.id + '/500.jpg';
+      this.media=this.$root.storageUrl + '/creators_images/' + img.id + '/500.jpg';
       this.hashtags='Artigram'+ img.tags.replace("/#/g", ",");
     },
     beforeOpen(event) {

@@ -176,7 +176,7 @@ var render = function() {
       _c("div", { staticClass: "row-1" }, [
         _c("img", {
           staticClass: "logo",
-          attrs: { src: "/storage/images/artigram-logo.png" }
+          attrs: { src: _vm.$root.storageUrl + "/images/artigram-logo.png" }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "footer-ul" }, [

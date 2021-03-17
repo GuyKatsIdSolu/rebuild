@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer-copyq">
       <div class="row-1">
-        <img class="logo" src="/storage/images/artigram-logo.png" />
+        <img class="logo" :src="$root.storageUrl+'/images/artigram-logo.png'" />
         <div class="footer-ul">
           <div>
             <a target="_blank" href="https://artigram.me/about-us/" >About</a>

@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import Api from "../apis/Api";
 export default {
   data: () => ({
     cartContent: {},
@@ -79,7 +80,7 @@ export default {
   methods: {
     changeQty(rowId, qty) {
       var that = this;
-      axios.get('/change-qty/' + rowId + '/' + qty)
+      Api.get('/change-qty/' + rowId + '/' + qty)
         .then(response => {
           that.cartContent = response.data;
           that.refreshCart();
@@ -94,14 +95,14 @@ export default {
     },
     continueShopping() {
       var that = this;
-      axios.get('/api/username-by-product-id/'+that.cartContent[Object.keys(this.cartContent)[this.itemCount-1]].id)
+      Api.get('/api/username-by-product-id/'+that.cartContent[Object.keys(this.cartContent)[this.itemCount-1]].id)
         .then(response => {
           that.$router.push('/@'+response.data);
         });
     },
     getContent() {
       var that = this;
-      axios.get('/api/get-cart-content')
+      Api.get('/api/get-cart-content')
         .then(response => {
           that.cartContent = response.data;
           that.refreshCart();

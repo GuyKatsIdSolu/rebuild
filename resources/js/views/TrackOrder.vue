@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import Api from "../apis/Api";
 export default {
   props:['creator','user'],
   components: {
@@ -52,7 +53,7 @@ export default {
         });
         return;
       }
-      axios.post('/api/track-order', {
+      Api.post('/api/track-order', {
         'email':this.email,
         'itemId':this.itemId
       })

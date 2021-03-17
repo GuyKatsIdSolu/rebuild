@@ -59,6 +59,8 @@
 </modal>
 </template>
 <script>
+import Api from "../../apis/Api";
+
 import {
   Hooper,
   Slide,
@@ -121,7 +123,7 @@ export default {
       $('.edit-image-popup .delete_url').attr('href', '/account/delete/' + this.img.id);
       $('.edit-image-popup textarea[name=description]').val(this.img.description);
       $('.edit-image-popup .img-name').val(this.img.name);
-      $('.edit-image-popup .img-prev').attr('src', 'https://my.' + this.$root.dev + 'artigram.me/storage/creators_images/' + this.img.id + '/500.jpg');
+      $('.edit-image-popup .img-prev').attr('src', 'https://my.' + this.$root.storageUrl + '/creators_images/' + this.img.id + '/500.jpg');
       $('.edit-image-popup #is_active').prop('checked', true);
       $('.edit-image-popup #isnt_active').prop('checked', false);
 

@@ -6,7 +6,7 @@
       <div class="top">
         <div class="avatar-frame">
           <div class="avatar">
-            <img  :src="'/storage/creator_images/'+ storeOwner.id+'.jpg'" alt="Avatar of creator">
+            <img  :src="$root.storageUrl+'/creator_images/'+ storeOwner.id+'.jpg'" alt="Avatar of creator">
           </div>
         </div>
         <div class="name">{{storeOwner.username}}</div>
@@ -182,18 +182,19 @@
         <div class="gallery">
           <div class="item" v-for="(img, $index) in storeOwner.images" :key="$index" v-if="img.status=='approved'">
             <div @click="$router.push('/catalog-'+img.id)" class="thumbnail">
-              <v-lazy-image :class="img.ratio<1? 'portrait': ''" :src="'/storage/creator_images/' + img.id + '/500.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
+              <v-lazy-image :class="img.ratio<1? 'portrait': ''" :src="$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
             </div>
           </div>
         </div>
         <div class="page-footer">
-          <a target="_blank" href="https://www.artigram.me"<img src="/storage/images/artigram-logo-square.png"/></a>
+          <a target="_blank" href="https://www.artigram.me"<img :src="$root.storageUrl+'/images/artigram-logo-square.png'"/></a>
           <a class="link" href="" @click.prevent="$router.push('/@'+storeOwner.username)">My Artigram store</a>
         </div>
       </div>
     </template>
 
     <script>
+    import Api from "../apis/Api";
     export default {
       props:['creator','user'],
       data() {
@@ -218,7 +219,7 @@
       methods:{
         init() {
           var that=this;
-          axios.get('/api/store-owner/'+this.$route.params.owner)
+          Api.get('/api/store-owner/'+this.$route.params.owner)
           .then(response => {
             that.storeOwner=response.data;
             for (var i = 1; i <= 5; i++) {
@@ -252,7 +253,7 @@
               type: 'text-enterd',
             },
           });
-          axios.post('/api/set-bio-page-bio', {
+          Api.post('/api/set-bio-page-bio', {
             'bio':this.bio,
             'creatorId':this.storeOwner.id,
           })

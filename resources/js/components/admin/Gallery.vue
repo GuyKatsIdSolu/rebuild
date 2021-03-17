@@ -19,7 +19,7 @@
         <masonry :cols="{default: 4, 1000: 3, 700: 2, 400: 2}" :gutter="{default: '20px', 400: '40px'}">
           <div class="img-box _1Nk0C placeholder" v-if="status=='approved' && imgs && imgs.length == 0">
             <div class="pos-abs">
-              <img src="/storage/images/approved-images-icon.png"/>
+              <img :src="$root.storageUrl+'/images/approved-images-icon.png'"/>
               <div class="text">
                 No Approved Images<br>
                 Upload Now!
@@ -29,7 +29,7 @@
           <div :class="'img-box _1Nk0C placeholder '+(imgs && imgs.length?'purple-bg':'')" v-if="status=='pending'">
             <div class="pos-abs">
               <!-- #f2eef3 -->
-              <img src="/storage/images/pending-image-icon.png"/>
+              <img :src="$root.storageUrl+'/images/pending-image-icon.png'"/>
               <div class="text" v-if="imgs && imgs.length == 0">
                 No Pending Images
               </div>
@@ -44,7 +44,7 @@
           </div>
           <div class="img-box _1Nk0C placeholder" v-if="status=='not approved' && imgs && imgs.length == 0">
             <div class="pos-abs">
-              <img src="/storage/images/not-approved-images-icon.png"/>
+              <img :src="$root.storageUrl+'/images/not-approved-images-icon.png'"/>
               <div class="text">
                 Good Job<br>
                 No Unapproved Images
@@ -149,8 +149,8 @@
               </svg>
             </div>
           </div>
-          <v-lazy-image v-if="status=='approved'" :class="'img '+'img-'+img.id" :src="'/storage/creator_images/' + img.id + '/500.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
-          <v-lazy-image v-else :class="'img '+'img-'+img.id" :src="'/storage/creator_images/' + img.id + '/1000C.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
+          <v-lazy-image v-if="status=='approved'" :class="'img '+'img-'+img.id" :src="$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
+          <v-lazy-image v-else :class="'img '+'img-'+img.id" :src="$root.storageUrl+'/creator_images/' + img.id + '/1000C.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
           <div v-if="$root.isMobile" class="edit-modal-delete-box">
             <a class="more-link" href="#"  @click.prevent="$modal.show('edit-delete-' + img.id)"><svg class="icon" style="width: 35px; height: 35px;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M116.362876 512m-116.362876 0a69.545 69.545 0 1 0 232.725752 0 69.545 69.545 0 1 0-232.725752 0ZM512 512m-116.362876 0a69.545 69.545 0 1 0 232.725752 0 69.545 69.545 0 1 0-232.725752 0ZM907.637124 512m-116.362876 0a69.545 69.545 0 1 0 232.725752 0 69.545 69.545 0 1 0-232.725752 0Z" /></svg></a>
             <modal class="edit-delete-modal" :name="'edit-delete-' + img.id">
@@ -181,7 +181,7 @@
 </template>
 
 <script>
-
+import Api from "../../apis/Api";
 export default {
   name: 'Gallery',
   props: ['user','creator','status', 'limit', 'pagination','perPage','forceSearch','isFirstTime'],
@@ -356,7 +356,7 @@ export default {
       $('.edit-image-popup .delete_url').attr('href', '/account/delete/' + img.id);
       $('.edit-image-popup textarea[name=description]').val(img.description);
       $('.edit-image-popup .img-name').val(img.name);
-      $('.edit-image-popup .img-prev').attr('src', 'https://my.'+this.$root.dev+'artigram.me/storage/creator_images/' + img.id + '/500.jpg');
+      $('.edit-image-popup .img-prev').attr('src', this.$root.storageUrl+'/creator_images/' + img.id + '/500.jpg');
       $('.edit-image-popup #is_active').prop('checked', true);
       $('.edit-image-popup #isnt_active').prop('checked', false);
     },
@@ -452,7 +452,7 @@ export default {
       return true;
     },
     getSrc(img) {
-      return window.location.origin + '/storage/creator_images/' + img.id + '/500.jpg';
+      return window.location.origin + this.$root.storageUrl+'/creator_images/' + img.id + '/500.jpg';
     },
   },
 };

@@ -74,6 +74,8 @@
 </template>
 
 <script>
+import Api from "../apis/Api";
+
 export default {
   props: ['store'],
   data: () => ({
@@ -83,7 +85,7 @@ export default {
   methods: {
     getContent() {
       var vm = this;
-      axios.get('/api/get-cart-content')
+      Api.get('/api/get-cart-content')
         .then(response => {
           vm.cartContent = response.data;
           // debugger;
@@ -94,7 +96,7 @@ export default {
     },
     deleteItem(rowId) {
       var vm = this;
-      axios.get('/api/remove-item-from-cart/' + rowId)
+      Api.get('/api/remove-item-from-cart/' + rowId)
         .then(response => {
           vm.$delete(this.cartContent, rowId);
         });

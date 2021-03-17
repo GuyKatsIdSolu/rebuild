@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let Api = axios.create({
-  baseURL: "/",
+  baseURL: 'https://rebuild.dev.artigram.me/',
   withCredentials: true
 });
 

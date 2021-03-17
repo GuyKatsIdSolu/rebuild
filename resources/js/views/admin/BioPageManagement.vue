@@ -17,7 +17,7 @@
         <a class="edit"  @click.prevent="$router.push('/admin/profile')">Edit</a>
         <div class="avatar-frame">
           <div class="avatar">
-            <img  :src="'/storage/creator_images/'+ creator.id+'.jpg'" alt="Avatar of creator">
+            <img  :src="$root.storageUrl+'/creator_images/'+ creator.id+'.jpg'" alt="Avatar of creator">
           </div>
         </div>
         <div class="name">{{creator.username}}</div>
@@ -201,7 +201,7 @@
         <div class="gallery">
           <div class="item" v-for="(img, $index) in imgs" :key="$index">
             <div @click="$router.push('/catalog-'+img.id)" class="thumbnail">
-              <v-lazy-image :class="img.ratio<1? 'portrait': ''" :src="'/storage/creator_images/' + img.id + '/500.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
+              <v-lazy-image :class="img.ratio<1? 'portrait': ''" :src="$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
             </div>
           </div>
         </div>
@@ -210,6 +210,8 @@
     </template>
 
     <script>
+    import Api from "../../apis/Api";
+    
     export default {
       props:['creator','user'],
       data() {
@@ -228,7 +230,7 @@
         '$route': {
           handler: function() {
             // debugger;
-            axios.get('/api/creator/'+this.user.id)
+            Api.get('/api/creator/'+this.user.id)
             .then(response => {
               this.creator=response.data;
             });
@@ -246,7 +248,7 @@
           }
 
           this.refresh++;
-          axios.get('/api/get-user-images', {
+          Api.get('/api/get-user-images', {
             params: {
               page: 1,
               status: 'approved',
@@ -262,7 +264,7 @@
           return link.title=='' || link.url=='';
         },
         updateLinks(){
-          axios.post('/api/set-bio-page-links', {
+          Api.post('/api/set-bio-page-links', {
             links:JSON.stringify(this.links),
             creatorId:this.creator.id,
           }).then(response => {
@@ -295,7 +297,7 @@
               type: 'text-enterd',
             },
           });
-          axios.post('/api/set-bio-page-bio', {
+          Api.post('/api/set-bio-page-bio', {
             'bio':this.bio,
             'creatorId':this.creator.id,
           })

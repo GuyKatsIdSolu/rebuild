@@ -425,9 +425,14 @@ var render = function() {
             _vm.creator
               ? _c("v-lazy-image", {
                   attrs: {
-                    src: "/storage/creator_images/" + _vm.creator.id + ".jpg",
+                    src:
+                      _vm.$root.storageUrl +
+                      "/creator_images/" +
+                      _vm.creator.id +
+                      ".jpg",
                     "src-placeholder":
-                      "/storage/images/profile_img_placeholder.jpg",
+                      _vm.$root.storageUrl +
+                      "/images/profile_img_placeholder.jpg",
                     alt: "Avatar of user"
                   }
                 })
@@ -660,7 +665,9 @@ var render = function() {
           },
           [
             _c("img", {
-              attrs: { src: "/storage/images/artigram-logo-square.png" }
+              attrs: {
+                src: _vm.$root.storageUrl + "/images/artigram-logo-square.png"
+              }
             })
           ]
         ),

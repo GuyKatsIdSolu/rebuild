@@ -8,7 +8,7 @@
             <div class="edit">Edit</div>
           </div>
         </a>
-        <v-lazy-image v-if="creator" :src="'/storage/creator_images/' + creator.id + '.jpg'" src-placeholder="/storage/images/profile_img_placeholder.jpg" alt="Avatar of user"/>
+        <v-lazy-image v-if="creator" :src="$root.storageUrl+'/creator_images/' + creator.id + '.jpg'" :src-placeholder="$root.storageUrl+'/images/profile_img_placeholder.jpg'" alt="Avatar of user"/>
       </div>
       <div class="user-big-thumb-right">
         <b v-if="user" style="text-transform: capitalize;">Hi {{user.first_name}}</b>
@@ -42,7 +42,7 @@
     </div>
     <div class="sidebar">
       <a class="logo" href="" @click.prevent="$router.push('/admin')">
-        <img src="/storage/images/artigram-logo-square.png"/>
+        <img :src="$root.storageUrl+'/images/artigram-logo-square.png'"/>
       </a>
       <a href="" @click.prevent="$router.push('/admin')">
         <svg version="1.1" id="_x34_67947fa-27d7-490e-b249-4c178978e5af"

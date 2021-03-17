@@ -28,7 +28,7 @@
               <div class="row cur-box" :data-pid="index">
                 <div class="col-md-6">
                   <div class="product-preview-box" :id="index">
-                    <v-lazy-image :src="'/storage/creator_images/'+img.id+'/previews/'+product.product_code+'/1000_1.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                    <v-lazy-image :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/'+product.product_code+'/1000_1.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
                   </div>
                 </div>
                 <div class="col-md-6 details">
@@ -58,7 +58,7 @@
           <hooper :wheelControl="false" style="width:90%;" :itemsToShow="4" :infiniteScroll="true">
             <slide v-for="(product ,index) in products" :key="index">
               <div class="thumbnail-wrapper" @click="slideTo(index)">
-                <img class="thumbnail" :src="'/storage/creator_images/'+img.id+'/previews/'+product.product_code+'/1000_1.jpg'">
+                <img class="thumbnail" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/'+product.product_code+'/1000_1.jpg'">
               </div>
             </slide>
             <hooper-navigation slot="hooper-addons"></hooper-navigation>
@@ -88,7 +88,7 @@
         <div class="tab-pane active" id="details">
           <div v-if="!$root.isMobile" class="col-md-6">
             <div style="    background: url(/storage/images/opacity.jpg);">
-              <v-lazy-image class="img-prev" :src="'/storage/creator_images/' + img.id + '/500.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
+              <v-lazy-image class="img-prev" :src="$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
             </div>
           </div>
           <div class="col-md-6 det">
@@ -419,6 +419,7 @@
 </modal>
 </template>
 <script>
+import Api from "../../apis/Api";
 import {
   Hooper,
   Slide,

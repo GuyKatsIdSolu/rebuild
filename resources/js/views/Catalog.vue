@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import Api from "../apis/Api";
 import {
   Hooper,
   Slide,
@@ -173,7 +174,7 @@ export default {
   methods:{
     getProductPreviews() {
       var that = this;
-      axios.get('/api/image/' + this.$route.params.imgId)
+      Api.get('/api/image/' + this.$route.params.imgId)
       .then(response => {
         that.img=response.data;
         that.img.products.forEach((product, i) => {

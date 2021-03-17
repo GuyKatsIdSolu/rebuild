@@ -9,9 +9,10 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
-/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
-/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _apis_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../apis/Api */ "./resources/js/apis/Api.js");
+/* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
+/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
+/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2__);
 var _methods;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -126,13 +127,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ShopModal',
   props: ['creator'],
   components: {
-    Hooper: hooper__WEBPACK_IMPORTED_MODULE_0__["Hooper"],
-    Slide: hooper__WEBPACK_IMPORTED_MODULE_0__["Slide"],
-    HooperNavigation: hooper__WEBPACK_IMPORTED_MODULE_0__["Navigation"]
+    Hooper: hooper__WEBPACK_IMPORTED_MODULE_1__["Hooper"],
+    Slide: hooper__WEBPACK_IMPORTED_MODULE_1__["Slide"],
+    HooperNavigation: hooper__WEBPACK_IMPORTED_MODULE_1__["Navigation"]
   },
   data: function data() {
     return {
@@ -172,7 +174,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$root.clicked = true;
       this.$parent.imgLikeClicked.push(img.id);
       img.likes++;
-      axios.get('/api/image-like/' + img.id).then(function (response) {
+      _apis_Api__WEBPACK_IMPORTED_MODULE_0__["default"].get('/api/image-like/' + img.id).then(function (response) {
         _this.$root.clicked = false;
       });
     },
@@ -240,11 +242,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         type: 'clicked'
       }
     });
-    axios.post('/api/add-item-to-cart', {
+    _apis_Api__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/add-item-to-cart', {
       'productId': this.curProduct.id,
       'properties': this.selectedProperties,
       'quantity': this.quantity,
-      'previewUrl': this.$root.currentUrl + '/storage/creator_images/' + this.img.id + '/previews/' + this.curProduct.product_code + '/1000_1.jpg',
+      'previewUrl': this.$root.currentUrl + $root.storageUrl + '/creator_images/' + this.img.id + '/previews/' + this.curProduct.product_code + '/1000_1.jpg',
       'price': (this.prices[this.curProduct.product_code] * (100 - this.creator.discount) / 100).toFixed(2)
     }).then(function (response) {
       _this2.$root.$refs.app.$refs.nav.$refs.cart.cartContent = _this2.img.products;
@@ -263,7 +265,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }), _defineProperty(_methods, "slideTo", function slideTo(index) {
     this.$refs.carousel.slideTo(index);
   }), _defineProperty(_methods, "getProductPreviews", function getProductPreviews() {
-    var that = this; // axios.get('/api/image-products/' + this.img.id)
+    var that = this; // Api.get('/api/image-products/' + this.img.id)
     // .then(response => {
 
     for (var index in this.img.products) {
@@ -369,7 +371,11 @@ var render = function() {
           _c("div", { staticClass: "user-big-thumb" }, [
             _c("img", {
               attrs: {
-                src: "/storage/creator_images/" + _vm.creator.id + ".jpg",
+                src:
+                  _vm.$root.storageUrl +
+                  "/creator_images/" +
+                  _vm.creator.id +
+                  ".jpg",
                 alt: "Avatar of user"
               }
             })
@@ -416,7 +422,8 @@ var render = function() {
                                     description: _vm.img.description,
                                     media:
                                       _vm.$root.currentUrl +
-                                      "/storage/creator_images/" +
+                                      _vm.$root.storageUrl +
+                                      "/creator_images/" +
                                       _vm.img.id +
                                       "/previews/" +
                                       _vm.curProduct.product_code +
@@ -639,13 +646,15 @@ var render = function() {
                               _c("v-lazy-image", {
                                 attrs: {
                                   src:
-                                    "/storage/creator_images/" +
+                                    _vm.$root.storageUrl +
+                                    "/creator_images/" +
                                     _vm.img.id +
                                     "/previews/" +
                                     _vm.curProduct.product_code +
                                     "/1000_1.jpg",
                                   "src-placeholder":
-                                    "/storage/images/placeholder-white.png"
+                                    _vm.$root.storageUrl +
+                                    "/images/placeholder-white.png"
                                 }
                               })
                             ],
@@ -655,7 +664,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "col-md-6 details" }, [
                           _c("div", { staticClass: "title" }, [
-                            _vm._v(_vm._s(_vm.curProduct.details.title))
+                            _vm._v(_vm._s(_vm.curProduct.details.category.name))
                           ]),
                           _vm._v(" "),
                           _c(
@@ -801,6 +810,8 @@ var render = function() {
                                         _c("label", [
                                           _vm._v(_vm._s(property.name) + "  ")
                                         ]),
+                                        _vm._v(" "),
+                                        _c("br"),
                                         _vm._v(" "),
                                         property.name != "color"
                                           ? _c(
@@ -955,7 +966,7 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("View product page")]
+                              [_vm._v("View product")]
                             ),
                             _vm._v(" "),
                             _c("div", { staticClass: "likes-counter" }, [
@@ -1028,13 +1039,15 @@ var render = function() {
                             staticClass: "thumbnail",
                             attrs: {
                               src:
-                                "/storage/creator_images/" +
+                                _vm.$root.storageUrl +
+                                "/creator_images/" +
                                 _vm.img.id +
                                 "/previews/" +
                                 _vm.curProduct.product_code +
                                 "/1000_1.jpg",
                               "src-placeholder":
-                                "/storage/images/placeholder-white.png"
+                                _vm.$root.storageUrl +
+                                "/images/placeholder-white.png"
                             }
                           })
                         ],
@@ -1067,7 +1080,9 @@ var render = function() {
             },
             [
               _c("img", {
-                attrs: { src: "/storage/images/view_products_icon.png" }
+                attrs: {
+                  src: _vm.$root.storageUrl + "/images/view_products_icon.png"
+                }
               }),
               _vm._v(" View all products")
             ]

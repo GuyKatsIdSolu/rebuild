@@ -117,6 +117,8 @@ const app=new Vue({
       screenWidth: 0,
       isMobile: 0,
       currentUrl: null,
+      apiUrl: 'https://rebuild.dev.artigram.me',
+      storageUrl: 'https://rebuild.dev.artigram.me/storage',
     };
   },
   watch: {

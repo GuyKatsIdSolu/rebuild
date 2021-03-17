@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import Api from "../../apis/Api";
+
 import moment from 'moment'
 
 export default {
@@ -33,7 +35,7 @@ export default {
   },
   methods:{
     init() {
-      axios.get('/api/orders/'+this.creator.id)
+      Api.get('/api/orders/'+this.creator.id)
       .then(response => {
         this.isEmpty=response.data;
       });

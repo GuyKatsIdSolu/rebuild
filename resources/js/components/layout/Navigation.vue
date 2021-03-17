@@ -22,8 +22,8 @@
         <div class="container no-padding">
           <div class="navbar-header" v-if="!isAdminPage">
             <router-link v-if="$route.name!='ImageUploader'" class="navbar-brand" to="/">
-              <img v-if="isAdminPage" src="/storage/images/artigram-logo.png"/>
-              <img v-else src="/storage/images/artigram-logo-square.png"/>
+              <img v-if="isAdminPage" :src="$root.storageUrl+'/images/artigram-logo.png'"/>
+              <img v-else :src="$root.storageUrl+'/images/artigram-logo-square.png'"/>
             </router-link>
           </div>
 

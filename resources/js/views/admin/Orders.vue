@@ -160,7 +160,7 @@ export default {
   },
   methods:{
     init() {
-      // axios.get('/api/orders/'+this.creator.id)
+      // Api.get('/api/orders/'+this.creator.id)
       // .then(response => {
       //   this.isEmpty=response.data;
       // });

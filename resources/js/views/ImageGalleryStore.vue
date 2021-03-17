@@ -10,15 +10,15 @@
         </div>
       </div>
       <div class="banner" style="" >
-        <img v-if="!list.length" :src="'/storage/creator_images/'+ lastImage.id + '/banner.jpg'" alt="">
-        <img v-else src="/storage/images/banner-artigram-logo.png" alt="">
+        <img v-if="!list.length" :src="$root.storageUrl+'/creator_images/'+ lastImage.id + '/banner.jpg'" alt="">
+        <img v-else :src="$root.storageUrl+'/images/banner-artigram-logo.png'" alt="">
       </div>
       <div class="container no-padding">
         <div class="row user-header-info">
           <div class="col-md-12">
             <div class="">
               <div class="user-big-thumb" style="">
-                <v-lazy-image v-if="storeOwner" :src="'/storage/creator_images/' + storeOwner.id + '.jpg'" src-placeholder="/storage/images/profile_img_placeholder.jpg" alt="Avatar of user"/>
+                <v-lazy-image v-if="storeOwner" :src="$root.storageUrl+'/creator_images/' + storeOwner.id + '.jpg'" :src-placeholder="$root.storageUrl+'/images/profile_img_placeholder.jpg'" alt="Avatar of user"/>
               </div>
               <div class="user-big-thumb-right">
                 <b>{{storeOwner.store_name==''? storeOwner.user.first_name+' Shop' : storeOwner.store_name}}</b>
@@ -248,7 +248,7 @@
                 network="pinterest"
                 :url="$root.currentUrl+ '/gallery/' + img.id"
                 :title="img.name + ' (ID '+img.id+')'+' '+img.description+ ' ' +$root.getPinterestContent(img)"
-                :media="$root.currentUrl+'/storage/creator_images/' + img.id + '/500.jpg'"
+                :media="$root.currentUrl+$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'"
               >
               <svg height="30px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs19"/><g id="g3031"><path d="m 511.672,255.92999 c 0,141.3849 -114.61511,256 -256,256 -141.3849,0 -256.00000293,-114.6151 -256.00000293,-256 C -0.32800293,114.5451 114.2871,-0.07000732 255.672,-0.07000732 c 141.38489,0 256,114.61510732 256,255.99999732 z" id="circle8" style="fill:#cb2027;fill-opacity:1"/><g id="g3000" transform="translate(-603.11865,-9.8474559)"><g id="g3142" transform="translate(221.28814,-27.9639)"><g id="Layer_14"><g id="g3121"><path d="m 645.85601,122.6817 c -93.402,0 -140.5,66.963 -140.5,122.815 0,33.812 12.796,63.89 40.25,75.089 4.505,1.858 8.54,0.065 9.849,-4.916 0.906,-3.438 3.055,-12.139 4.015,-15.777 1.31,-4.928 0.799,-6.646 -2.833,-10.957 -7.916,-9.332 -12.985,-21.416 -12.985,-38.551 0,-49.677 37.175,-94.154 96.794,-94.154 52.797,0 81.801,32.26 81.801,75.329 0,56.692 -25.089,104.534 -62.325,104.534 -20.563,0 -35.953,-16.999 -31.031,-37.865 5.908,-24.908 17.355,-51.777 17.355,-69.771 0,-16.087 -8.646,-29.507 -26.513,-29.507 -21.021,0 -37.913,21.752 -37.913,50.884 0,18.558 6.271,31.112 6.271,31.112 0,0 -21.518,91.16 -25.291,107.125 -7.506,31.798 -1.128,70.766 -0.584,74.692 0.315,2.343 3.317,2.907 4.68,1.142 1.927,-2.53 26.983,-33.441 35.482,-64.34 2.417,-8.739 13.831,-54.032 13.831,-54.032 6.835,13.038 26.794,24.491 48.024,24.491 63.19,0 106.072,-57.604 106.072,-134.719 0.006,-58.317 -49.387,-112.624 -124.449,-112.624 z" id="path3131" style="fill:#ffffff"/></g></g><g id="Layer_1_1_-8"/></g></g></g><g id="Layer_1_1_"/></svg>
             </ShareNetwork>
@@ -294,25 +294,25 @@
                 <div class="view-store" v-if="!$root.isMobile">View Products</div>
                 <div class="quick-view" v-if="!$root.isMobile" @click="openShopModal(img)">Quick View</div>
               </div>
-              <v-lazy-image class="img" :src="'/storage/creator_images/' + img.id + '/500.jpg'" :src-placeholder="'/storage/creator_images/' + img.id + '/80.jpg'" />
+              <v-lazy-image class="img" :src="$root.storageUrl+'/creator_images/' + img.id + '/500.jpg'" :src-placeholder="$root.storageUrl+'/creator_images/' + img.id + '/80.jpg'" />
               <hooper :wheelControl="false" :itemsToShow="2.5" :centerMode="true" :infiniteScroll="true" v-if="$root.isMobile">
                 <slide v-for="(template,$j) in prevs[$index].templates_list" :key="$j">
                   <a :href="'/product-page/' + prevs[$index].products_list[$j].id">
                     <div class="thumbnail-wrapper">
-                      <v-lazy-image class="thumbnail" :src="'/storage/temp/'+$j+'.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                      <v-lazy-image class="thumbnail" :src="$root.storageUrl+'/temp/'+$j+'.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
                     </div>
                   </a>
                 </slide>
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
               </hooper>
               <div v-if="$root.isMobile" class="view-store-b" style="">
-                <a :href="'/gallery/' + img.store_id"><img src="storage/images/view_products_icon.png" /> View all products</a>
+                <a :href="'/gallery/' + img.store_id"><img :src="$root.storageUrl+'/images/view_products_icon.png'" /> View all products</a>
               </div>
             </div>
           </div>
         </masonry>
       </div>
-      <div v-else class="no-img"><img src="/storage/images/no-img.png" /></div>
+      <div v-else class="no-img"><img :src="$root.storageUrl+'/images/no-img.png'" /></div>
     </div>
   </div>
 </div>

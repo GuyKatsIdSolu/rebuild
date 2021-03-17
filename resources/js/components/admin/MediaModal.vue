@@ -34,7 +34,7 @@
           <div class="row col-md-12">
             <div class="col-md-6">
               <transition name="fade">
-                <v-lazy-image :key="cur" class="prev-gallery-img" :src="'/storage/creator_images/'+img.id+'/previews/categories/'+cur+'/post/700.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                <v-lazy-image :key="cur" class="prev-gallery-img" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/categories/'+cur+'/post/700.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
               </transition>
             </div>
             <div class="col-md-6 right-side">
@@ -48,7 +48,7 @@
                   <span class="value">#{{imgTag}}</span>
                 </div>
               </div>
-              <a href="" @click.prevent="downloadImage('/storage/temp/'+img.id+'_'+cur+'_post.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
+              <a href="" @click.prevent="downloadImage($root.storageUrl+'/temp/'+img.id+'_'+cur+'_post.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
             </div>
           </div>
           <div class="carusel-box">
@@ -56,7 +56,7 @@
               <slide v-for="(product, $index) in products" :key="$index">
                 <div class="thumbnail-wrapper">
                   <a href="" @click.prevent="cur=product.details.category_id">
-                    <v-lazy-image class="thumbnail" :src="'/storage/creator_images/'+img.id+'/previews/categories/'+product.details.category_id+'/post/700.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                    <v-lazy-image class="thumbnail" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/categories/'+product.details.category_id+'/post/700.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
                   </a>
                 </div>
               </slide>
@@ -68,7 +68,7 @@
           <div class="row col-md-12">
             <div class="col-md-6">
               <transition name="fade">
-                <v-lazy-image :key="cur" class="prev-gallery-img" :src="'/storage/creator_images/'+img.id+'/previews/categories/'+cur+'/story/700.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                <v-lazy-image :key="cur" class="prev-gallery-img" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/categories/'+cur+'/story/700.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
               </transition>
             </div>
             <div class="col-md-6 right-side">
@@ -82,7 +82,7 @@
                   <span class="value">#{{imgTag}}</span>
                 </div>
               </div>
-              <a href="" @click.prevent="downloadImage('/storage/creator_images/'+img.id+'/previews/categories/'+cur+'/story/700.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
+              <a href="" @click.prevent="downloadImage($root.storageUrl+'/creator_images/'+img.id+'/previews/categories/'+cur+'/story/700.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
             </div>
           </div>
           <div class="carusel-box">
@@ -90,7 +90,7 @@
               <slide v-for="(product, $index) in products" :key="$index">
                 <div class="thumbnail-wrapper">
                   <a href="" @click.prevent="cur=product.details.category_id">
-                    <v-lazy-image class="thumbnail" :src="'/storage/creator_images/'+img.id+'/previews/categories/'+product.details.category_id+'/story/700.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+                    <v-lazy-image class="thumbnail" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/categories/'+product.details.category_id+'/story/700.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
                   </a>
                 </div>
               </slide>
@@ -103,19 +103,19 @@
         <div class="tab-pane active" id="posts">
           <div v-for="(template, pid) in galleryObj.templates_list" :key="pid" class="item">
             <div class="img-frame">
-              <v-lazy-image :key="cur" class="prev-gallery-img" :src="'/storage/creator_images/'+img.id+'/previews/categories/'+cur+'/post/700.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+              <v-lazy-image :key="cur" class="prev-gallery-img" :src="$root.storageUrl+'/creator_images/'+img.id+'/previews/categories/'+cur+'/post/700.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
             </div>
             <div class="title">Image {{img.id}} on {{categories[template.our_category_id]}}</div>
             <a class="copy margin-10" href="" @click.prevent="copyToClipboard($root.currentUrl+'@'+username)"><i class="fas fa-link"></i> Store link</a>
-            <a href="" @click.prevent="downloadImage('/storage/temp/'+img.id+'_'+cur+'_post.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
+            <a href="" @click.prevent="downloadImage($root.storageUrl+'/temp/'+img.id+'_'+cur+'_post.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
           </div>
         </div>
         <div class="tab-pane" id="stories">
           <div v-for="(template, pid) in galleryObj.templates_list" :key="pid" class="item">
-            <v-lazy-image :key="cur" class="prev-gallery-img" :src="'/storage/temp/'+img.id+'_'+template.our_category_id+'_story.jpg'" src-placeholder="/storage/images/placeholder-white.png" />
+            <v-lazy-image :key="cur" class="prev-gallery-img" :src="$root.storageUrl+'/temp/'+img.id+'_'+template.our_category_id+'_story.jpg'" :src-placeholder="$root.storageUrl+'/images/placeholder-white.png'" />
             <div class="title">Image {{img.id}} on {{categories[template.our_category_id]}}</div>
             <a class="copy margin-10" href="" @click.prevent="copyToClipboard($root.currentUrl+'@'+username)"><i class="fas fa-link"></i> Store link</a>
-            <a href="" @click.prevent="downloadImage('/storage/temp/'+img.id+'_'+cur+'_story.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
+            <a href="" @click.prevent="downloadImage($root.storageUrl+'/temp/'+img.id+'_'+cur+'_story.jpg', categories[cur]+' '+img.id)" class="download-btn btn purple">Download Image</a>
           </div>
         </div>
       </div>
@@ -124,6 +124,7 @@
 </modal>
 </template>
 <script>
+import Api from "../../apis/Api";
 import {
   Hooper,
   Slide,

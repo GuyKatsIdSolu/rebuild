@@ -1,7 +1,7 @@
 <template>
   <div class="container store-management-page" v-if="creator">
   <div class="top-banner">
-    <img src="/storage/images/pricing diagram.png"/>
+    <img :src="$root.storageUrl+'/images/pricing diagram.png'"/>
   </div>
     <store-management :creator="creator"/>
   </div>
@@ -26,7 +26,7 @@
         '$route': {
           handler: function() {
             // debugger;
-            // axios.get('/api/creator/'+this.user.id)
+            // Api.get('/api/creator/'+this.user.id)
             // .then(response => {
             //   this.creator=response.data;
             // });

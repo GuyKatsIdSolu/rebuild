@@ -9,9 +9,10 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
-/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
-/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _apis_Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../apis/Api */ "./resources/js/apis/Api.js");
+/* harmony import */ var hooper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooper */ "./node_modules/hooper/dist/hooper.esm.js");
+/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hooper/dist/hooper.css */ "./node_modules/hooper/dist/hooper.css");
+/* harmony import */ var hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hooper_dist_hooper_css__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -72,15 +73,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['authUser', 'tokenUrl'],
   components: {
-    Hooper: hooper__WEBPACK_IMPORTED_MODULE_0__["Hooper"],
-    Slide: hooper__WEBPACK_IMPORTED_MODULE_0__["Slide"],
-    HooperNavigation: hooper__WEBPACK_IMPORTED_MODULE_0__["Navigation"],
-    HooperPagination: hooper__WEBPACK_IMPORTED_MODULE_0__["Pagination"]
+    Hooper: hooper__WEBPACK_IMPORTED_MODULE_1__["Hooper"],
+    Slide: hooper__WEBPACK_IMPORTED_MODULE_1__["Slide"],
+    HooperNavigation: hooper__WEBPACK_IMPORTED_MODULE_1__["Navigation"],
+    HooperPagination: hooper__WEBPACK_IMPORTED_MODULE_1__["Pagination"]
   },
   data: function data() {
     return {
@@ -128,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
       $('.edit-image-popup .delete_url').attr('href', '/account/delete/' + this.img.id);
       $('.edit-image-popup textarea[name=description]').val(this.img.description);
       $('.edit-image-popup .img-name').val(this.img.name);
-      $('.edit-image-popup .img-prev').attr('src', 'https://my.' + this.$root.dev + 'artigram.me/storage/creators_images/' + this.img.id + '/500.jpg');
+      $('.edit-image-popup .img-prev').attr('src', 'https://my.' + this.$root.storageUrl + '/creators_images/' + this.img.id + '/500.jpg');
       $('.edit-image-popup #is_active').prop('checked', true);
       $('.edit-image-popup #isnt_active').prop('checked', false);
       this.getProductPreviews(this.img.store_id);
