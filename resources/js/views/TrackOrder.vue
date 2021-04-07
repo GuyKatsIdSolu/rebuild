@@ -1,6 +1,6 @@
 <template>
   <div class="track-order-page">
-    <div class="h1">Where is my order</div>
+    <div class="h1">Where is my order1</div>
     <div class="h2">On this page you can check the status of your order and where it is located</div>
     <div><input type="email" class="" v-model="email" placeholder="Email address associated with the order"/></div>
     <div><input type="number" class="" v-model="itemId" placeholder="Item ID"/></div>
